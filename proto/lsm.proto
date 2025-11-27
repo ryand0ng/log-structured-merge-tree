@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package distributedstore;
+option go_package = "distributedstore/proto;proto";
+
+message KeyValue {
+    bytes key = 1;
+    bytes value = 2;
+    int64 timestamp = 3; 
+}
+
+service NodeService {
+    rpc Put (PutRequest) returns (PutResponse);
+    rpc Get (GetRequest) returns (GetResponse);
+    rpc Delete (DeleteRequest) returns (DeleteResponse);
+}
+
+message PutRequest {
+    KeyValue kv = 1;
+}
+
+message PutResponse {
+    bool success = 1;
+}
+
+message GetRequest {
+    bytes key = 1;
+}
+
+message GetResponse {
+    KeyValue kv = 1;
+}
+
+message DeleteRequest {
+    bytes key = 1;
+}
+
+message DeleteResponse {
+    bool success = 1;
+}
