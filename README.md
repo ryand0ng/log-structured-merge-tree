@@ -26,7 +26,7 @@ val, found, _ := cluster.Get("key")
 cluster.Delete("key")
 ```
 
-## TODOs
+## TODO
 
 - [ ] Consistent hashing
 - [ ] Replication
